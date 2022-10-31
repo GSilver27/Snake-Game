@@ -29,7 +29,7 @@ function loop() {
     // настройка фрейм-рейта в зависимости от герцовки
     // для 60герцовых мониторов дефольное значение = 4
     requestAnimationFrame(loop);
-    if (++count < 20) {
+    if (++count < 4) {
         return;
     }
     count = 0;
