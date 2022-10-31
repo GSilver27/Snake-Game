@@ -18,6 +18,43 @@ h1 {
     font-family: sans-serif;
 }
 
+h2 {
+    color: #fa0c0c;
+    font-size: 36px;
+    text-shadow: 0 0 25px #ff0000;
+    font-family: sans-serif;
+}
+
 canvas {
     border: 1px solid #FFF;
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    color: #FFF;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.btns-horizontal {
+    display: flex;
+    gap: 45px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+}
+
+.btn:hover {
+    color: #000;
+    background: #fff;
 }

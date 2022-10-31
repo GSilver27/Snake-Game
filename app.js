@@ -14,6 +14,11 @@ let apple = {
     x: 320,
     y: 320
 };
+// УПРАВЛЕНИЕ МОБИЛЬНЫЕ УСТРОЙСТВА
+let up = document.querySelector('.btn-up');
+let left = document.querySelector('.btn-left');
+let right = document.querySelector('.btn-right');
+let down = document.querySelector('.btn-down');
 
 function getRandomInt(min, max) {
     return  Math.floor(Math.random() * (max - min) + min);
@@ -24,7 +29,7 @@ function loop() {
     // настройка фрейм-рейта в зависимости от герцовки
     // для 60герцовых мониторов дефольное значение = 4
     requestAnimationFrame(loop);
-    if (++count < 4) {
+    if (++count < 20) {
         return;
     }
     count = 0;
@@ -93,18 +98,18 @@ document.addEventListener('keydown', function (e) {
     // ничего не поменяет — змейка продолжит двигаться в ту же сторону, что и раньше.
     // Это сделано для того, чтобы не разворачивать весь массив со змейкой на лету и не усложнять код игры.
 
+    // стрелка вверх
+    // если нажата стрелка вверх, и при этом змейка никуда не движется по вертикали
+    if (e.which === 38 && snake.dy === 0) {
+        // то даём ей движение по вертикали, вверх, а горизонтальное — останавливаем
+        snake.dy = -grid;
+        snake.dx = 0;
+    }
     // стрелка влево
-    // если нажата стрелка влево, и при этом змейка никуда не движется по горизонтали
-    if (e.which === 37 && snake.dx === 0) {
-        // то даём ей движение по горизонтали, влево, а вертикальное — останавливаем
+    else if (e.which === 37 && snake.dx === 0) {
         snake.dx = -grid;
         snake.dy = 0;
     }
-    // стрелка вверх
-    else if (e.which === 38 && snake.dy === 0) {
-            snake.dy = -grid;
-            snake.dx = 0;
-        }
     // стрелка вправо
     else if (e.which === 39 && snake.dx === 0) {
         snake.dx = grid;
@@ -116,5 +121,34 @@ document.addEventListener('keydown', function (e) {
         snake.dx = 0;
     }
 });
+
+//  управление нажатиями
+function clickUp() {
+    if (snake.dy === 0) {
+        snake.dy = -grid;
+        snake.dx = 0;
+    }
+}
+
+function clickLeft() {
+    if (snake.dx === 0) {
+        snake.dx = -grid;
+        snake.dy = 0;
+    }
+}
+function clickRight() {
+    if (snake.dx === 0) {
+        snake.dx = grid;
+        snake.dy = 0;
+    }
+}
+
+function clickDown() {
+    if (snake.dy === 0) {
+        snake.dy = grid;
+        snake.dx = 0;
+    }
+}
+
 
 requestAnimationFrame(loop);
